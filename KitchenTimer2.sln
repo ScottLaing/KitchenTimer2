@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KitchenTimer2", "KitchenTimer2\KitchenTimer2.csproj", "{42D66A9A-C318-4A69-A980-25FCC9F3EEBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42D66A9A-C318-4A69-A980-25FCC9F3EEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D66A9A-C318-4A69-A980-25FCC9F3EEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D66A9A-C318-4A69-A980-25FCC9F3EEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D66A9A-C318-4A69-A980-25FCC9F3EEBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {012519EB-2F9D-41F3-B65C-0A5C9C84B72F}
+	EndGlobalSection
+EndGlobal

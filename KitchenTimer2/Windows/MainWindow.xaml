@@ -1,0 +1,138 @@
+﻿<Window x:Class="KitchenTimer.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                Icon="../icons/Timer_16x.png"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KitchenTimer"
+        xmlns:controls="clr-namespace:KitchenTimer.controls"
+        mc:Ignorable="d"
+        ResizeMode="CanResizeWithGrip"
+        SizeChanged="ResizeWindow"
+        MinHeight="182.972"
+        MinWidth="370.264"
+        WindowStartupLocation="CenterScreen"
+        Title="Kitchen Timer" 
+        Height="182.972" 
+        WindowStyle="ToolWindow"
+        Width="370.264" 
+        Background="#FF071D02">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18"></RowDefinition>
+            <RowDefinition Height="47*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New Timer Window" Click="NewTimerWindow_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="/Images/NewWindow_16x.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_New Log" >
+                        <MenuItem.Icon>
+                            <Image Source="/Images/NewCatalog_16x.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Save Log" >
+                        <MenuItem.Icon>
+                            <Image Source="/Images/SaveStatusBar7_16x.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="_Exit" Click="ShutdownApp" >
+                        <MenuItem.Icon>
+                            <Image Source="/Images/CloseSolution_16x.png" Width="16" Height="16" />
+                        </MenuItem.Icon> 
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_View">
+                    <MenuItem Header="_Log" >
+                        <MenuItem.Icon>
+                            <Image Source="/Images/Log_16x.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Options" Click="RedColorOption_Click">
+                    <MenuItem Header="_Red">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/red2.png" Width="20" Height="20" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Blue" Click="BlueColorOption_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/blue.png" Width="20" Height="20" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Green" Click="GreenColorOption_Click1">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/green.png" Width="20" Height="20" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Purple" Click="PurpleColorOption_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/purple.png" Width="20" Height="20" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_White" Click="WhiteColorOption_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Images/white.png" Width="20" Height="20" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Settings" Click="ShowSettingsWindow" >
+                        <MenuItem.Icon>
+                            <Image Source="/Images/Settings_16x.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About" Click="ShowAboutWindow" >
+                        <MenuItem.Icon>
+                            <Image Source="/Images/Question_16x.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+        
+        <StackPanel x:Name="spButtonsStackPanel" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"
+                    Grid.Row="1" Grid.Column="0">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Margin" Value="1,0,1,0"></Setter>
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="VerticalAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                </Style>
+            </StackPanel.Resources>
+            <Button x:Name="btnStart" Click="StartTimer">
+                <controls:StartButtonViewbox></controls:StartButtonViewbox>
+            </Button>
+            <Button x:Name="btnPause" Click="PauseTimer">
+                <controls:PauseButtonViewbox></controls:PauseButtonViewbox>
+            </Button>
+            <Button x:Name="btnStop" Click="StopTimer">
+                <controls:StopButtonViewbox></controls:StopButtonViewbox>
+            </Button>
+            <Button x:Name="btnRefresh" Click="ResetTimer">
+                <controls:RefreshButtonViewbox></controls:RefreshButtonViewbox>
+            </Button>
+            <Button x:Name="btnSettings" Click="ShowSettingsWindow" Visibility="Hidden">
+                <controls:SettingsButtonViewbox></controls:SettingsButtonViewbox>
+            </Button>
+        </StackPanel>
+        <TextBlock x:Name="tbTime" HorizontalAlignment="Stretch"  
+                   Grid.Row="2" Grid.Column="0" Margin="0,-17,0,0"
+                   Text="{Binding Path=TimeDisplayValue}" VerticalAlignment="Stretch"   
+                   FontSize="55" Foreground="LightGreen"/>
+    </Grid>
+</Window>

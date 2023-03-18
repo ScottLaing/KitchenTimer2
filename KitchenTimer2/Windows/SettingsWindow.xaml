@@ -1,0 +1,56 @@
+﻿<Window x:Class="KitchenTimer.Windows.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:KitchenTimer.controls"
+        xmlns:local="clr-namespace:KitchenTimer"
+        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        Icon="../icons/Timer_16x.png"
+        WindowStyle="ToolWindow"
+        Closing="Window_Closing"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Settings" Height="197" Width="420.667"     Background="#FF071D02">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="Foreground" Value="#FFF5ECEC" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+            </Style>
+        </Grid.Resources>
+
+        <Button x:Name="btnPlay" Click="btnPlay_Click" Margin="334,102,0,0" Width="34" Height="34" >
+            <controls:StartButtonViewbox></controls:StartButtonViewbox>
+        </Button>
+
+        <Button x:Name="btnStart" Margin="342,9,0,0"  Click="btnSave_Click" >
+            <controls:SaveButtonViewbox></controls:SaveButtonViewbox>
+        </Button>
+        <Label Content="Period in Minutes"  Margin="20,61,0,0" Foreground="#FF18B265" />
+        <TextBox x:Name="txtSetTime2" Width="70" FontSize="20" Margin="210,67,0,0" ></TextBox>
+        <!--<xctk:DoubleUpDown x:Name="txtSetTime2" Value="15.0" Minimum="0.1" FormatString="F1" Increment=".1" FontSize="22" Margin="208,51,97,55" />-->
+        <!--<TextBox x:Name="txtSetTime" Height="32" Margin="179,10,0,0" TextWrapping="Wrap" Text="15.0" FontSize="22" Visibility="Hidden"/>-->
+        <Label Content="Alarm Sound"  Margin="20,96,0,0" Foreground="#FF18B265" />
+        <ComboBox x:Name="cmbAlarmSound" HorizontalAlignment="Left" Margin="177,106,0,0" VerticalAlignment="Top" Width="145" Height="27" SelectionChanged="cmbAlarmSound_Selected">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Title}" FontSize="16" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+    </Grid>
+</Window>

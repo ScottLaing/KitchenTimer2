@@ -1,0 +1,118 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icons\Timer_16x.png" />
+    <None Remove="Images\blue.png" />
+    <None Remove="Images\CloseSolution_16x.png" />
+    <None Remove="Images\green.png" />
+    <None Remove="Images\Log_16x.png" />
+    <None Remove="Images\NewCatalog_16x.png" />
+    <None Remove="Images\NewWindow_16x.png" />
+    <None Remove="Images\purple.png" />
+    <None Remove="Images\Question_16x.png" />
+    <None Remove="Images\red.png" />
+    <None Remove="Images\red2.png" />
+    <None Remove="Images\SaveStatusBar7_16x.png" />
+    <None Remove="Images\Settings_16x.png" />
+    <None Remove="Images\Settings_16x.svg" />
+    <None Remove="Images\white.png" />
+    <None Remove="Resources\Alarm01.wav" />
+    <None Remove="Resources\Alarm02.wav" />
+    <None Remove="Resources\Alarm03.wav" />
+    <None Remove="Resources\Alarm04.wav" />
+    <None Remove="Resources\Alarm05.wav" />
+    <None Remove="Resources\Alarm06.wav" />
+    <None Remove="Resources\Alarm07.wav" />
+    <None Remove="Resources\Alarm08.wav" />
+    <None Remove="Resources\Alarm09.wav" />
+    <None Remove="Resources\Alarm10.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\NewCatalog_16x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\Timer_16x.png" />
+    <Resource Include="Images\blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\CloseSolution_16x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Log_16x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\NewWindow_16x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\purple.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Question_16x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\red.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\red2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\SaveStatusBar7_16x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Settings_16x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <EmbeddedResource Include="Images\Settings_16x.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Alarm01.wav" />
+    <EmbeddedResource Include="Resources\Alarm02.wav" />
+    <EmbeddedResource Include="Resources\Alarm03.wav" />
+    <EmbeddedResource Include="Resources\Alarm04.wav" />
+    <EmbeddedResource Include="Resources\Alarm05.wav" />
+    <EmbeddedResource Include="Resources\Alarm06.wav" />
+    <EmbeddedResource Include="Resources\Alarm07.wav" />
+    <EmbeddedResource Include="Resources\Alarm08.wav" />
+    <EmbeddedResource Include="Resources\Alarm09.wav" />
+    <EmbeddedResource Include="Resources\Alarm10.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
+    <PackageReference Include="Xceed.Products.Wpf.Toolkit.Base" Version="4.5.22477.12540" />
+    <PackageReference Include="Xceed.Products.Wpf.Toolkit.Full" Version="4.5.22477.12540" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resx\Strings2.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings2.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resx\Strings2.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings2.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
