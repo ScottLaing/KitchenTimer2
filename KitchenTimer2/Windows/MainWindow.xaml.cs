@@ -1,11 +1,13 @@
 ﻿using KitchenTimer.Entities;
 using KitchenTimer2.Resx;
+using KitchenTimer2.Windows;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Media;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using static KitchenTimer.Constants.FontSizing;
 
@@ -14,8 +16,29 @@ namespace KitchenTimer.Windows
     /// <summary>
     /// Code behind class for MainWindow.xaml window
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window, INotifyPropertyChanged, IParentWindow
     {
+
+        public TextBlock TimeTextBlock
+        {
+            get
+            {
+                return this.tbTime;
+            }
+        }
+
+        public string TitleString
+        {
+            get
+            {
+                return this.Title;
+            }
+            set
+            {
+                this.Title = value;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string timeDisplayValue;
@@ -43,7 +66,7 @@ namespace KitchenTimer.Windows
         // flag, is the timer running now
         private bool isTimerRunning = false;
         // value used for resetting run times
-        private double lastResetValue = 15.0;
+        public double lastResetValue = 15.0;
         // delegate for update text block invoke calls
         private delegate void UpdateTextBlockCallback(int hr, int min, int sec, int tenthsSec);
         // sound player object used to play the alarms
@@ -377,7 +400,7 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ShowSettingsWindow(object sender, RoutedEventArgs e)
+        public void ShowSettingsWindow(object sender, RoutedEventArgs e)
         {
             var setTime = new SettingsWindow(CurrentAlarm, lastResetValue);
             var dlgResult = setTime.ShowDialog();
@@ -397,7 +420,7 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="setTime"></param>
         /// <param name="currentAlarm"></param>
-        private void ChangeSettings(SettingsWindow setTime, Alarm currentAlarm)
+        public void ChangeSettings(SettingsWindow setTime, Alarm currentAlarm)
         {
             if (setTime != null)
             {
@@ -411,17 +434,6 @@ namespace KitchenTimer.Windows
                 }
                 RefreshTimeDisplay();
             }
-        }
-
-        /// <summary>
-        /// Handle show about window menu call.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ShowAboutWindow(object sender, RoutedEventArgs e)
-        {
-            var aboutWindow = new AboutWindow();
-            aboutWindow.ShowDialog();
         }
 
         #endregion
@@ -465,7 +477,7 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResetTimer(object sender, RoutedEventArgs e)
+        public void ResetTimer(object sender, RoutedEventArgs e)
         {
             CurrentTimeVal = lastResetValue;
             RefreshTimeDisplay();
@@ -491,7 +503,7 @@ namespace KitchenTimer.Windows
         /// <summary>
         /// Refresh the timer, called by the windows timer in background thread.
         /// </summary>
-        private void RefreshTimeDisplay()
+        public void RefreshTimeDisplay()
         {
             var timeSpan = TimeSpan.FromMinutes(CurrentTimeVal);
             int tenthsSecond = (int)(timeSpan.Milliseconds / 100.0);
@@ -559,23 +571,6 @@ namespace KitchenTimer.Windows
             }
         }
 
-        /// <summary>
-        /// handle the new window menu option
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NewTimerWindow_Click(object sender, RoutedEventArgs e)
-        {
-            var app = Application.Current as App;
-            if (app == null)
-            {
-                MessageBox.Show(Strings2.TroubleGettingApplicationObject);
-                return;
-            }
-            var mainWin = new MainWindow(++app.NewWindowCounter);
-            mainWin.Show();
-        }
-
         #endregion
 
         #region Utility Methods
@@ -609,36 +604,6 @@ namespace KitchenTimer.Windows
 
         #endregion
 
-        private void RedColorOption_Click(object sender, RoutedEventArgs e)
-        {
-            tbTime.Foreground = Brushes.Red;
-            e.Handled = true;
-        }
-
-        private void GreenColorOption_Click1(object sender, RoutedEventArgs e)
-        {
-            tbTime.Foreground = Brushes.LightGreen;
-            e.Handled = true;
-        }
-
-        private void BlueColorOption_Click(object sender, RoutedEventArgs e)
-        {
-            tbTime.Foreground = Brushes.LightBlue;
-            e.Handled = true;
-        }
-
-        private void PurpleColorOption_Click(object sender, RoutedEventArgs e)
-        {
-            tbTime.Foreground = Brushes.Purple;
-            e.Handled = true;
-        }
-
-        private void WhiteColorOption_Click(object sender, RoutedEventArgs e)
-        {
-            tbTime.Foreground = Brushes.White; 
-            e.Handled = true;
-        }
-
         private void RaisePropertyChanged(string propName)
         {
             if (PropertyChanged != null)
@@ -647,30 +612,9 @@ namespace KitchenTimer.Windows
             }
         }
 
-        private void MenuItem_StopWatchWindow_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var app = Application.Current as App;
-            if (app == null)
-            {
-                MessageBox.Show(Strings2.TroubleGettingApplicationObject);
-                return;
-            }
-            var mainWin = new StopWatchWindow(++app.NewStopWatchWindowCounter);
-            mainWin.Show();
-        }
-
-        private void MenuItem_RenameTimer_Click(object sender, RoutedEventArgs e)
-        {
-            var renameWindow = new RenameWindowTitleWindow(this.Title);
-            bool? result = renameWindow.ShowDialog();
-            if (result ?? false)
-            {
-                var newTitle = renameWindow.TimerName;
-                if (!string.IsNullOrWhiteSpace(newTitle))
-                {
-                    this.Title = newTitle;
-                }
-            }
+            ctrlMenuDockPanel.ParentWindow = this;
         }
     }
 }

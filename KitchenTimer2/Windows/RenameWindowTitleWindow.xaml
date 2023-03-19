@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:KitchenTimer.controls"
         xmlns:local="clr-namespace:KitchenTimer"
-        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         Icon="../icons/Timer_16x.png"
         WindowStyle="ToolWindow"
         Closing="Window_Closing"

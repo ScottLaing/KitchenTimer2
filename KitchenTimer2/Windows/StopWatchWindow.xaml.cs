@@ -1,11 +1,13 @@
 ﻿using KitchenTimer.Entities;
 using KitchenTimer2.Resx;
+using KitchenTimer2.Windows;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Media;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using static KitchenTimer.Constants.FontSizing;
 
@@ -14,8 +16,28 @@ namespace KitchenTimer.Windows
     /// <summary>
     /// Code behind class for MainWindow.xaml window
     /// </summary>
-    public partial class StopWatchWindow : Window, INotifyPropertyChanged
+    public partial class StopWatchWindow : Window, INotifyPropertyChanged, IParentWindow
     {
+        public TextBlock TimeTextBlock
+        {
+            get
+            {
+                return this.tbTime;
+            }
+        }
+
+        public string TitleString
+        {
+            get
+            {
+                return this.Title;
+            }
+            set
+            {
+                this.Title = value;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string timeDisplayValue;
@@ -377,19 +399,19 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ShowSettingsWindow(object sender, RoutedEventArgs e)
+        public void ShowSettingsWindow(object sender, RoutedEventArgs e)
         {
-            var setTime = new SettingsWindow(CurrentAlarm, lastResetValue);
-            var dlgResult = setTime.ShowDialog();
-            if (dlgResult.HasValue && dlgResult.Value && setTime.TimeValue > 0)
-            {
-                TurnOffTimer();
-                ChangeSettings(setTime, CurrentAlarm);
-                CurrentTimeVal = lastResetValue;
-                RefreshTimeDisplay();
-                ResetTimer(new object(), new RoutedEventArgs());
-            }
-            e.Handled = true;
+            //var setTime = new SettingsWindow(CurrentAlarm, lastResetValue);
+            //var dlgResult = setTime.ShowDialog();
+            //if (dlgResult.HasValue && dlgResult.Value && setTime.TimeValue > 0)
+            //{
+            //    TurnOffTimer();
+            //    ChangeSettings(setTime, CurrentAlarm);
+            //    CurrentTimeVal = lastResetValue;
+            //    RefreshTimeDisplay();
+            //    ResetTimer(new object(), new RoutedEventArgs());
+            //}
+            //e.Handled = true;
         }
 
         /// <summary>
@@ -645,6 +667,12 @@ namespace KitchenTimer.Windows
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ctrlMenuDockPanel.ParentWindow = this;
+            ctrlMenuDockPanel.ShowSettingsMenuItem = false;
         }
 
         // textBlock.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDFD991")); 
