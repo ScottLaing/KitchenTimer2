@@ -14,7 +14,7 @@ namespace KitchenTimer.Windows
     /// <summary>
     /// Code behind class for MainWindow.xaml window
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class StopWatchWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -29,7 +29,7 @@ namespace KitchenTimer.Windows
         // timer object used by timer calls
         private Timer _timer = null;
         // current time for count down
-        private double currentTimeVal = 15.0;
+        private double currentTimeVal = 0.0;
 
         // reference to local assembly
         System.Reflection.Assembly assembly;
@@ -43,7 +43,7 @@ namespace KitchenTimer.Windows
         // flag, is the timer running now
         private bool isTimerRunning = false;
         // value used for resetting run times
-        private double lastResetValue = 15.0;
+        private double lastResetValue = 0.0;
         // delegate for update text block invoke calls
         private delegate void UpdateTextBlockCallback(int hr, int min, int sec, int tenthsSec);
         // sound player object used to play the alarms
@@ -147,7 +147,7 @@ namespace KitchenTimer.Windows
         /// <summary>
         /// constructor
         /// </summary>
-        public MainWindow()
+        public StopWatchWindow()
         {
             InitializeComponent();
             DataContext = this;
@@ -160,9 +160,9 @@ namespace KitchenTimer.Windows
         /// secondary window constructor
         /// </summary>
         /// <param name="windowCount"></param>
-        public MainWindow(int windowCount) : this()
+        public StopWatchWindow(int windowCount) : this()
         {
-            this.Title = $"Kitchen Timer - Countdown ({windowCount})";
+            this.Title = $"Kitchen Timer - StopWatch ({windowCount})";
         }
 
         #endregion
@@ -346,14 +346,14 @@ namespace KitchenTimer.Windows
         {
             if (IsTimerRunning)
             {
-                CurrentTimeVal = Math.Max(0, CurrentTimeVal - DecreasePeriod);
-                if (currentTimeVal < .01)
-                {
-                    if (! AlarmPlaying)
-                    {
-                        PlayAlarm();
-                    }
-                }
+                CurrentTimeVal = Math.Max(0, CurrentTimeVal + DecreasePeriod);
+                //if (currentTimeVal < .01)
+                //{
+                //    if (! AlarmPlaying)
+                //    {
+                //        PlayAlarm();
+                //    }
+                //}
                 RefreshTimeDisplay();
             }
         }
@@ -645,18 +645,6 @@ namespace KitchenTimer.Windows
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
-        }
-
-        private void MenuItem_StopWatchWindow_Click(object sender, RoutedEventArgs e)
-        {
-            var app = Application.Current as App;
-            if (app == null)
-            {
-                MessageBox.Show(Strings2.TroubleGettingApplicationObject);
-                return;
-            }
-            var mainWin = new StopWatchWindow(++app.NewStopWatchWindowCounter);
-            mainWin.Show();
         }
 
         // textBlock.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDFD991")); 

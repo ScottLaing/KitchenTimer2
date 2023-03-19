@@ -14,6 +14,8 @@ namespace KitchenTimer
     /// </summary>
     public partial class App : Application
     {
+        internal int NewStopWatchWindowCounter = 0;
+
         public int NewWindowCounter { get; set; } = 1;
 
         protected override void OnStartup(StartupEventArgs e)

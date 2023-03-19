@@ -9,7 +9,6 @@
         Icon="../icons/Timer_16x.png"
         WindowStyle="ToolWindow"
         Closing="Window_Closing"
-        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="Settings" Height="197" Width="420.667"     Background="#FF071D02">
     <Grid>
