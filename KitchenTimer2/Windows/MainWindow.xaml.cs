@@ -659,7 +659,18 @@ namespace KitchenTimer.Windows
             mainWin.Show();
         }
 
-        // textBlock.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDFD991")); 
-        //#FF18B265
+        private void MenuItem_RenameTimer_Click(object sender, RoutedEventArgs e)
+        {
+            var renameWindow = new RenameWindowTitleWindow(this.Title);
+            bool? result = renameWindow.ShowDialog();
+            if (result ?? false)
+            {
+                var newTitle = renameWindow.TimerName;
+                if (!string.IsNullOrWhiteSpace(newTitle))
+                {
+                    this.Title = newTitle;
+                }
+            }
+        }
     }
 }

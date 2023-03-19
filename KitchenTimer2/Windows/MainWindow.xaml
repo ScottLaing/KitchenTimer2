@@ -29,6 +29,11 @@
         <DockPanel Grid.Row="0">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
+                    <MenuItem Header="_Rename Timer" Click="MenuItem_RenameTimer_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="/Images/Rename_16x.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <MenuItem Header="_New Countdown Window" Click="NewTimerWindow_Click" >
                         <MenuItem.Icon>
                             <Image Source="/Images/NewWindow_16x.png" Width="16" Height="16" />
