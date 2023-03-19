@@ -16,7 +16,7 @@ namespace KitchenTimer.Windows
     /// <summary>
     /// Code behind class for MainWindow.xaml window
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged, IParentWindow
+    public partial class TimerWindow : Window, INotifyPropertyChanged, IParentWindow
     {
 
         public TextBlock TimeTextBlock
@@ -170,7 +170,7 @@ namespace KitchenTimer.Windows
         /// <summary>
         /// constructor
         /// </summary>
-        public MainWindow()
+        public TimerWindow()
         {
             InitializeComponent();
             DataContext = this;
@@ -183,7 +183,7 @@ namespace KitchenTimer.Windows
         /// secondary window constructor
         /// </summary>
         /// <param name="windowCount"></param>
-        public MainWindow(int windowCount) : this()
+        public TimerWindow(int windowCount) : this()
         {
             this.Title = $"Kitchen Timer - Countdown ({windowCount})";
         }

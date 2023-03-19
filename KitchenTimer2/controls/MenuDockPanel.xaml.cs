@@ -139,7 +139,7 @@ namespace KitchenTimer.controls
                 MessageBox.Show(Strings2.TroubleGettingApplicationObject);
                 return;
             }
-            var mainWin = new MainWindow(++app.NewWindowCounter);
+            var mainWin = new TimerWindow(++app.NewWindowCounter);
             mainWin.Show();
         }
     }
