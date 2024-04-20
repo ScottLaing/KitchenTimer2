@@ -38,7 +38,7 @@ namespace KitchenTimer.Windows
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private string timeDisplayValue;
 
@@ -49,7 +49,7 @@ namespace KitchenTimer.Windows
         // how many milliseconds to call timer function
         private const int MilliSecondTimerPeriod = 10;
         // timer object used by timer calls
-        private Timer _timer = null;
+        private Timer? _timer = null;
         // current time for count down
         private double currentTimeVal = 0.0;
 

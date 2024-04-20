@@ -17,7 +17,7 @@ namespace KitchenTimer.controls
             InitializeComponent();
         }
 
-        public IParentWindow ParentWindow { get; set; }
+        public IParentWindow? ParentWindow { get; set; }
 
         private bool _showSettingsMenuItem = true;
         public bool ShowSettingsMenuItem
@@ -45,7 +45,10 @@ namespace KitchenTimer.controls
         /// <param name="e"></param>
         private void ShowSettingsWindow(object sender, RoutedEventArgs e)
         {
-            ParentWindow.ShowSettingsWindow(sender, e);
+            if (ParentWindow != null)
+            {
+                ParentWindow.ShowSettingsWindow(sender, e);
+            }   
         }
 
         /// <summary>
@@ -83,14 +86,17 @@ namespace KitchenTimer.controls
 
         private void MenuItem_RenameTimer_Click(object sender, RoutedEventArgs e)
         {
-            var renameWindow = new RenameWindowTitleWindow(ParentWindow.TitleString);
+            var renameWindow = new RenameWindowTitleWindow(ParentWindow?.TitleString ?? "");
             bool? result = renameWindow.ShowDialog();
             if (result ?? false)
             {
                 var newTitle = renameWindow.TimerName;
                 if (!string.IsNullOrWhiteSpace(newTitle))
                 {
-                    ParentWindow.TitleString = newTitle;
+                    if (ParentWindow != null)
+                    {
+                        ParentWindow.TitleString = newTitle;
+                    }
                 }
             }
         }
@@ -98,7 +104,10 @@ namespace KitchenTimer.controls
 
         private void RedColorOption_Click(object sender, RoutedEventArgs e)
         {
-            ParentWindow.TimeTextBlock.Foreground = Brushes.Red;
+            if (ParentWindow != null)
+            {
+                ParentWindow.TimeTextBlock.Foreground = Brushes.Red;
+            }
             e.Handled = true;
         }
 
@@ -110,7 +119,10 @@ namespace KitchenTimer.controls
 
         private void BlueColorOption_Click(object sender, RoutedEventArgs e)
         {
-            ParentWindow.TimeTextBlock.Foreground = Brushes.LightBlue;
+            if (ParentWindow != null)
+            {
+                ParentWindow.TimeTextBlock.Foreground = Brushes.LightBlue;
+            }
             e.Handled = true;
         }
 

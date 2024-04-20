@@ -39,7 +39,7 @@ namespace KitchenTimer.Windows
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private string timeDisplayValue;
 

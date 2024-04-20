@@ -40,7 +40,7 @@ namespace KitchenTimer.Windows
         /// <summary>
         /// alarm chosen by dialog call
         /// </summary>
-        public Alarm AlarmChosen { get; set; } = null;
+        public Alarm? AlarmChosen { get; set; } = null;
 
         #endregion
 

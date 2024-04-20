@@ -16,9 +16,6 @@ namespace KitchenTimer.Windows
     {
         #region Fields
 
-        // current assembly
-        private System.Reflection.Assembly assembly;
-
         // whether an alarm is playing now
         #endregion
                 

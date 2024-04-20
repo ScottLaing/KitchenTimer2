@@ -43,7 +43,10 @@ namespace KitchenTimer
         {
             MessageBox.Show($"Unexpected exception occurred: {e?.Exception.Message}", Constants.AppTitle);
             MessageBox.Show("Application will attempt to continue, you may need to restart it in some cases if errors continue.", Constants.AppTitle);
-            e.Handled = true;
+            if (e != null)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
