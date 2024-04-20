@@ -9,7 +9,7 @@
         WindowStyle="ToolWindow"
         Closing="Window_Closing"
         mc:Ignorable="d"
-        Title="Create Timer Log" Height="188" Width="540.667"     Background="#FF071D02">
+        Title="Create Timer Log" Height="188" Width="540.667"     Background="#FFE04040"  >
     <Grid>
         <Grid.Resources>
             <Style TargetType="Button">
@@ -27,17 +27,27 @@
                 <Setter Property="HorizontalAlignment" Value="Left" />
             </Style>
         </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="256*"/>
+            <ColumnDefinition Width="285*"/>
+        </Grid.ColumnDefinitions>
 
-        <Button x:Name="btnStart" Margin="462,9,0,0"  Click="btnSave_Click">
-            <controls:SaveButtonViewbox></controls:SaveButtonViewbox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        
+        <Button x:Name="btnStart" Margin="206,9,0,0" Click="btnSave_Click" Grid.Column="1">
+            <controls:SaveButtonViewbox ></controls:SaveButtonViewbox>
         </Button>
-        <Label Content="Log Name:"  Margin="15,51,0,0" Foreground="#FF18B265" />
-        <TextBox x:Name="txtLogName" Width="326" FontSize="20" Margin="135,57,0,0" ></TextBox>
-        <Label Content="Log File:"  Margin="40,98,0,0" Foreground="#FF18B265" />
-        <TextBox x:Name="txtLogFileName" Width="326" FontSize="20" Margin="135,104,0,0" />
+        <Label Content="Log Name:"  Margin="32,7,0,0" Foreground="White" Grid.Row="1" FontSize="18" />
+        <TextBox x:Name="txtLogName" Width="326" FontSize="20" Margin="135,10,0,0" Grid.Row="1" Grid.ColumnSpan="2"></TextBox>
+        <Label Content="Log File:"  Margin="53,4,0,0" Foreground="White" Grid.Row="2" FontSize="18" />
+        <TextBox x:Name="txtLogFileName" Width="326" FontSize="20" Margin="135,7,0,0" Grid.Row="2" Grid.ColumnSpan="2" />
 
-        <Button x:Name="btnGetLogFileName"  Click="btnSave_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,40,39" >
-            <controls:SettingsButtonViewbox Width="26"></controls:SettingsButtonViewbox>
+        <Button x:Name="btnGetLogFileName"  Click="btnSave_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="210,0,39,25" Grid.Row="2" Grid.Column="1" >
+            <controls:OpenfileDialogButtonViewbox Width="26"></controls:OpenfileDialogButtonViewbox>
         </Button>
     </Grid>
 </Window>

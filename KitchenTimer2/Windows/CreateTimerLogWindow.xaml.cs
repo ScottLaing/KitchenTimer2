@@ -62,7 +62,7 @@ namespace KitchenTimer.Windows
         {
             try
             {
-                TimerName = this.txtTimerName.Text.Trim();
+                TimerName = this.txtLogFileName.Text.Trim();
                 this.DialogResult = true;
                 this.Close();
             }

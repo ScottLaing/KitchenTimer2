@@ -142,5 +142,15 @@ namespace KitchenTimer.controls
             var mainWin = new TimerWindow(++app.NewWindowCounter);
             mainWin.Show();
         }
+
+        private void MenuItem_CreateNewLog(object sender, RoutedEventArgs e)
+        {
+            var createTimerLogWindow = new CreateTimerLogWindow(ParentWindow.TitleString);
+            bool? result = createTimerLogWindow.ShowDialog();
+            if (result ?? false)
+            {
+              // todo create new log file and turn on
+            }
+        }
     }
 }

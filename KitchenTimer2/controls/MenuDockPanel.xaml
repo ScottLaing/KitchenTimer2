@@ -25,7 +25,7 @@
                             <Image Source="/Images/StartTime_16x.png" Width="16" Height="16" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="_New Log" >
+                    <MenuItem Header="_New Log" Click="MenuItem_CreateNewLog" >
                         <MenuItem.Icon>
                             <Image Source="/Images/NewCatalog_16x.png" Width="16" Height="16" />
                         </MenuItem.Icon>
