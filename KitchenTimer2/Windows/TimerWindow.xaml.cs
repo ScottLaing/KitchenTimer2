@@ -50,12 +50,12 @@ namespace KitchenTimer.Windows
         // how many milliseconds to call timer function
         private const int MilliSecondTimerPeriod = 10;
         // timer object used by timer calls
-        private Timer _timer = null;
+        private Timer? _timer = null;
         // current time for count down
         private double currentTimeVal = 15.0;
 
         // reference to local assembly
-        System.Reflection.Assembly assembly;
+        System.Reflection.Assembly? assembly;
 
         // utility locks to control access to core values, needed as timer runs in background thread
         private object currentTimeLock = new object();
@@ -70,7 +70,7 @@ namespace KitchenTimer.Windows
         // delegate for update text block invoke calls
         private delegate void UpdateTextBlockCallback(int hr, int min, int sec, int tenthsSec);
         // sound player object used to play the alarms
-        private SoundPlayer player;
+        private SoundPlayer? player;
 
         /// <summary>
         /// is alarm currently playing flag
@@ -147,7 +147,7 @@ namespace KitchenTimer.Windows
         /// <summary>
         /// current alarm in use for timer
         /// </summary>
-        public Alarm CurrentAlarm { get; private set; }
+        public Alarm? CurrentAlarm { get; private set; }
 
         public string TimeDisplayValue
         {
@@ -288,7 +288,11 @@ namespace KitchenTimer.Windows
             }
             catch (Exception ex)
             {
-                player.SoundLocation = "";
+                if (player != null)
+                {
+                    // if we have a player, clear it (it's not going to work)
+                    player.SoundLocation = "";
+                }
                 Debug.WriteLine(ex.Message);
             }
         }
@@ -315,8 +319,11 @@ namespace KitchenTimer.Windows
         /// <param name="e"></param>
         private void PlayerLocationChanged(object sender, EventArgs e)
         {
-            string message = String.Format("SoundLocationChanged: {0}", player.SoundLocation);
-            LogStatus(message);
+            if (player != null)
+            {
+                string message = String.Format("SoundLocationChanged: {0}", player.SoundLocation);
+                LogStatus(message);
+            }
         }
 
         #endregion
@@ -333,8 +340,11 @@ namespace KitchenTimer.Windows
             {
                 if (!AlarmPlaying)
                 {
-                    player.PlayLooping();
-                    AlarmPlaying = true;
+                    if (player != null)
+                    {
+                        player.PlayLooping();
+                        AlarmPlaying = true;
+                    }
                 }
             }
         }
@@ -348,8 +358,11 @@ namespace KitchenTimer.Windows
             {
                 if (AlarmPlaying)
                 {
-                    player.Stop();
-                    AlarmPlaying = false;
+                    if (player != null)
+                    {
+                        player.Stop();
+                        AlarmPlaying = false;
+                    }
                 }
             }
             LogStatus("Stopped by user.");
@@ -430,7 +443,10 @@ namespace KitchenTimer.Windows
                 if (setTime.AlarmChosen != null)
                 {
                     CurrentAlarm = setTime.AlarmChosen;
-                    LoadAlarm(CurrentAlarm.WavName);
+                    if (CurrentAlarm.WavName != null)
+                    {
+                        LoadAlarm(CurrentAlarm.WavName);
+                    }
                 }
                 RefreshTimeDisplay();
             }

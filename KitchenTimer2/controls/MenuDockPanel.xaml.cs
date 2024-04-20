@@ -113,7 +113,10 @@ namespace KitchenTimer.controls
 
         private void GreenColorOption_Click1(object sender, RoutedEventArgs e)
         {
-            ParentWindow.TimeTextBlock.Foreground = Brushes.LightGreen;
+            if (ParentWindow != null)
+            {
+                ParentWindow.TimeTextBlock.Foreground = Brushes.LightGreen;
+            }
             e.Handled = true;
         }
 
@@ -128,13 +131,19 @@ namespace KitchenTimer.controls
 
         private void PurpleColorOption_Click(object sender, RoutedEventArgs e)
         {
-            ParentWindow.TimeTextBlock.Foreground = Brushes.Purple;
+            if (ParentWindow != null)
+            {
+                ParentWindow.TimeTextBlock.Foreground = Brushes.Purple;
+            }  
             e.Handled = true;
         }
 
         private void WhiteColorOption_Click(object sender, RoutedEventArgs e)
         {
-            ParentWindow.TimeTextBlock.Foreground = Brushes.White;
+            if (ParentWindow != null)
+            {
+                ParentWindow.TimeTextBlock.Foreground = Brushes.White;
+            }
             e.Handled = true;
         }
 
@@ -157,7 +166,7 @@ namespace KitchenTimer.controls
 
         private void MenuItem_CreateNewLog(object sender, RoutedEventArgs e)
         {
-            var createTimerLogWindow = new CreateTimerLogWindow(ParentWindow.TitleString);
+            var createTimerLogWindow = new CreateTimerLogWindow(ParentWindow?.TitleString ?? "");
             bool? result = createTimerLogWindow.ShowDialog();
             if (result ?? false)
             {

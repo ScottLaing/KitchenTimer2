@@ -17,16 +17,16 @@ namespace KitchenTimer.Windows
         #region Fields
 
         // current assembly
-        private System.Reflection.Assembly assembly;
+        private System.Reflection.Assembly? assembly;
 
         // whether an alarm is playing now
         private bool alarmIsPlaying = false;
 
         // the sound player used by dialog for testing alarm sounds
-        private SoundPlayer player;
+        private SoundPlayer? player;
 
         // the current alarm selected
-        private Alarm currentAlarm;
+        private Alarm? currentAlarm;
 
         #endregion
 
@@ -59,13 +59,17 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="currentAlarm"></param>
         /// <param name="countDown"></param>
-        public SettingsWindow(Alarm currentAlarm, double countDown) : this()
+        public SettingsWindow(Alarm? currentAlarm, double countDown) : this()
         {
-            this.currentAlarm = currentAlarm;
-            cmbAlarmSound.ItemsSource = Constants.AlarmList;
-            txtSetTime2.Text = string.Format("{0:F2}", countDown);
-            int index = FindAlarmIndex(currentAlarm);
-            cmbAlarmSound.SelectedIndex = index;
+            if (currentAlarm == null)
+            {
+                this.currentAlarm = currentAlarm;
+                cmbAlarmSound.ItemsSource = Constants.AlarmList;
+                txtSetTime2.Text = string.Format("{0:F2}", countDown);
+                int index = FindAlarmIndex(currentAlarm);
+                cmbAlarmSound.SelectedIndex = index;
+            }
+
             InitializeSoundPlayer();
         }
 
@@ -79,7 +83,14 @@ namespace KitchenTimer.Windows
         private void InitializeSoundPlayer()
         {
             player = new SoundPlayer();
-            LoadAlarm(this.currentAlarm.WavName);
+
+            if (this.currentAlarm != null) 
+            {
+                if (this.currentAlarm.WavName != null)
+                {
+                    LoadAlarm(this.currentAlarm.WavName);
+                }
+            }    
         }
 
         /// <summary>
@@ -130,6 +141,10 @@ namespace KitchenTimer.Windows
             }
             try
             {
+                if (player == null)
+                {
+                    return;
+                }
                 player.PlayLooping();
                 alarmIsPlaying = true;
             }
@@ -147,6 +162,10 @@ namespace KitchenTimer.Windows
         {
             if (alarmIsPlaying)
             {
+                if (player == null)
+                { 
+                    return;
+                }
                 player.Stop();
                 alarmIsPlaying = false;
             }
@@ -186,7 +205,10 @@ namespace KitchenTimer.Windows
                 MessageBox.Show(Strings2.AlarmDropDownError);
                 return;
             }
-            LoadAlarm(alarm.WavName);
+            if (alarm.WavName != null)
+            {
+                LoadAlarm(alarm.WavName);
+            }
             PlayAlarm();
         }
 

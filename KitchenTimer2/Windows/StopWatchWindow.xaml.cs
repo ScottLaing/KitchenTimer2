@@ -40,7 +40,7 @@ namespace KitchenTimer.Windows
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private string timeDisplayValue;
+        private string? timeDisplayValue;
 
         #region Fields
 
@@ -54,7 +54,7 @@ namespace KitchenTimer.Windows
         private double currentTimeVal = 0.0;
 
         // reference to local assembly
-        System.Reflection.Assembly assembly;
+        System.Reflection.Assembly? assembly;
 
         // utility locks to control access to core values, needed as timer runs in background thread
         private object currentTimeLock = new object();
@@ -69,7 +69,7 @@ namespace KitchenTimer.Windows
         // delegate for update text block invoke calls
         private delegate void UpdateTextBlockCallback(int hr, int min, int sec, int tenthsSec);
         // sound player object used to play the alarms
-        private SoundPlayer player;
+        private SoundPlayer? player;
 
         /// <summary>
         /// is alarm currently playing flag
@@ -146,9 +146,9 @@ namespace KitchenTimer.Windows
         /// <summary>
         /// current alarm in use for timer
         /// </summary>
-        public Alarm CurrentAlarm { get; private set; }
+        public Alarm? CurrentAlarm { get; private set; }
 
-        public string TimeDisplayValue
+        public string? TimeDisplayValue
         {
             get
             {
@@ -287,7 +287,11 @@ namespace KitchenTimer.Windows
             }
             catch (Exception ex)
             {
-                player.SoundLocation = "";
+                if (player != null) 
+                { 
+                    player.SoundLocation = ""; 
+                }
+
                 Debug.WriteLine(ex.Message);
             }
         }
@@ -314,7 +318,7 @@ namespace KitchenTimer.Windows
         /// <param name="e"></param>
         private void PlayerLocationChanged(object sender, EventArgs e)
         {
-            string message = String.Format("SoundLocationChanged: {0}", player.SoundLocation);
+            string message = String.Format("SoundLocationChanged: {0}", player?.SoundLocation ?? "unknown");
             LogStatus(message);
         }
 
@@ -332,7 +336,10 @@ namespace KitchenTimer.Windows
             {
                 if (!AlarmPlaying)
                 {
-                    player.PlayLooping();
+                    if (player != null)
+                    {
+                        player.PlayLooping();
+                    }
                     AlarmPlaying = true;
                 }
             }
@@ -347,7 +354,10 @@ namespace KitchenTimer.Windows
             {
                 if (AlarmPlaying)
                 {
-                    player.Stop();
+                    if (player != null)
+                    {
+                        player.Stop();
+                    }
                     AlarmPlaying = false;
                 }
             }
@@ -364,7 +374,7 @@ namespace KitchenTimer.Windows
         /// Main timer call back method.
         /// </summary>
         /// <param name="o"></param>
-        private void TimerCallback(Object o)
+        private void TimerCallback(Object? o)
         {
             if (IsTimerRunning)
             {
@@ -429,7 +439,11 @@ namespace KitchenTimer.Windows
                 if (setTime.AlarmChosen != null)
                 {
                     CurrentAlarm = setTime.AlarmChosen;
-                    LoadAlarm(CurrentAlarm.WavName);
+                    if (CurrentAlarm.WavName != null)
+                    {
+                        LoadAlarm(CurrentAlarm.WavName);
+                    }
+
                 }
                 RefreshTimeDisplay();
             }
