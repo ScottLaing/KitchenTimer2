@@ -66,8 +66,12 @@ namespace KitchenTimer.Windows
                 this.currentAlarm = currentAlarm;
                 cmbAlarmSound.ItemsSource = Constants.AlarmList;
                 txtSetTime2.Text = string.Format("{0:F2}", countDown);
-                int index = FindAlarmIndex(currentAlarm);
-                cmbAlarmSound.SelectedIndex = index;
+                if (currentAlarm != null)
+                {
+                    // find the index of the current alarm in the list (if it exists)
+                    int index = FindAlarmIndex(currentAlarm);
+                    cmbAlarmSound.SelectedIndex = index;
+                }
             }
 
             InitializeSoundPlayer();

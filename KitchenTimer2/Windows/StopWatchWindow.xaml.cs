@@ -305,7 +305,7 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PlayerLoadCompleted(object sender, AsyncCompletedEventArgs e)
+        private void PlayerLoadCompleted(object? sender, AsyncCompletedEventArgs e)
         {
             string message = "sound file load completed"; 
             LogStatus(message);
@@ -316,7 +316,7 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PlayerLocationChanged(object sender, EventArgs e)
+        private void PlayerLocationChanged(object? sender, EventArgs e)
         {
             string message = String.Format("SoundLocationChanged: {0}", player?.SoundLocation ?? "unknown");
             LogStatus(message);

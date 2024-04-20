@@ -41,7 +41,7 @@ namespace KitchenTimer.Windows
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private string timeDisplayValue;
+        private string? timeDisplayValue;
 
         #region Fields
 
@@ -149,7 +149,7 @@ namespace KitchenTimer.Windows
         /// </summary>
         public Alarm? CurrentAlarm { get; private set; }
 
-        public string TimeDisplayValue
+        public string? TimeDisplayValue
         {
             get
             {
@@ -306,7 +306,7 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PlayerLoadCompleted(object sender, AsyncCompletedEventArgs e)
+        private void PlayerLoadCompleted(object? sender, AsyncCompletedEventArgs e)
         {
             string message = "sound file load completed"; 
             LogStatus(message);
@@ -317,7 +317,7 @@ namespace KitchenTimer.Windows
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PlayerLocationChanged(object sender, EventArgs e)
+        private void PlayerLocationChanged(object? sender, EventArgs e)
         {
             if (player != null)
             {
@@ -378,7 +378,7 @@ namespace KitchenTimer.Windows
         /// Main timer call back method.
         /// </summary>
         /// <param name="o"></param>
-        private void TimerCallback(Object o)
+        private void TimerCallback(Object? o)
         {
             if (IsTimerRunning)
             {
@@ -420,7 +420,10 @@ namespace KitchenTimer.Windows
             if (dlgResult.HasValue && dlgResult.Value && setTime.TimeValue > 0)
             {
                 TurnOffTimer();
-                ChangeSettings(setTime, CurrentAlarm);
+                if (CurrentAlarm != null)
+                {
+                    ChangeSettings(setTime, CurrentAlarm);
+                }
                 CurrentTimeVal = lastResetValue;
                 RefreshTimeDisplay();
                 ResetTimer(new object(), new RoutedEventArgs());
