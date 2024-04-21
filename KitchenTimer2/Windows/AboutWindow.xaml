@@ -7,11 +7,12 @@
         xmlns:local="clr-namespace:KitchenTimer.Windows"
         ResizeMode="NoResize"
         WindowStyle="ToolWindow"
+        Background="Beige"
         mc:Ignorable="d"
         Title="About Kitchen Timer" Height="110.804" Width="519.598">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="21,13,0,0" TextWrapping="Wrap" Text="Kitchen Timer, Scott Laing (c) 2022, 2023 " VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="21,42,0,0" TextWrapping="Wrap" Text="A simple timer useful for kitchen timing or testing work." VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,13,0,0" TextWrapping="Wrap" Text="Kitchen Timer, Scott Laing (c) 2024 " VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,42,0,0" TextWrapping="Wrap" Text="A simple timer useful for the kitchen or software testing work." VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
