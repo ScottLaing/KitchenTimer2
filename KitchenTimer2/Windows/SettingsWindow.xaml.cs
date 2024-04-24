@@ -61,7 +61,7 @@ namespace KitchenTimer.Windows
         /// <param name="countDown"></param>
         public SettingsWindow(Alarm? currentAlarm, double countDown) : this()
         {
-            if (currentAlarm == null)
+            if (currentAlarm != null)
             {
                 this.currentAlarm = currentAlarm;
                 cmbAlarmSound.ItemsSource = Constants.AlarmList;
