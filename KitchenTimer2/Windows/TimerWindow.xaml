@@ -19,7 +19,7 @@
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,7">
         <Grid.RowDefinitions>
             <RowDefinition Height="18"></RowDefinition>
-            <RowDefinition Height="47*"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
             <RowDefinition Height="53*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -28,30 +28,30 @@
 
         <controls:MenuDockPanel x:Name="ctrlMenuDockPanel"></controls:MenuDockPanel>
 
-        <StackPanel x:Name="spButtonsStackPanel" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"
+        <StackPanel x:Name="spButtonsStackPanel" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5"
                     Grid.Row="1" Grid.Column="0">
             <StackPanel.Resources>
                 <Style TargetType="Button">
                     <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Margin" Value="1,0,1,0"></Setter>
+                    <!--<Setter Property="Margin" Value="1,0,1,0"></Setter>
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="VerticalAlignment" Value="Stretch" />
-                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />-->
                 </Style>
             </StackPanel.Resources>
-            <Button x:Name="btnStart" Click="StartTimer">
+            <Button x:Name="btnStart" Click="StartTimer" Margin="10,5,10,5" VerticalAlignment="Top" HorizontalAlignment="Left" ToolTip="Start Timer">
                 <controls:StartButtonViewbox></controls:StartButtonViewbox>
             </Button>
-            <Button x:Name="btnPause" Click="PauseTimer">
+            <Button x:Name="btnPause" Click="PauseTimer" Margin="0,5,10,5" ToolTip="Pause Timer"  VerticalAlignment="Top" HorizontalAlignment="Left" >
                 <controls:PauseButtonViewbox></controls:PauseButtonViewbox>
             </Button>
-            <Button x:Name="btnStop" Click="StopTimer">
+            <Button x:Name="btnStop" Click="StopTimer" Margin="0,5,10,5" ToolTip="Stop Timer"  VerticalAlignment="Top" HorizontalAlignment="Left" >
                 <controls:StopButtonViewbox></controls:StopButtonViewbox>
             </Button>
-            <Button x:Name="btnRefresh" Click="ResetTimer">
+            <Button x:Name="btnRefresh" Click="ResetTimer" Margin="0,5,10,5" ToolTip="Reset Timer"  VerticalAlignment="Top" HorizontalAlignment="Left" >
                 <controls:RefreshButtonViewbox></controls:RefreshButtonViewbox>
             </Button>
-            <Button x:Name="btnSettings" Click="ShowSettingsWindow" Visibility="Hidden">
+            <Button x:Name="btnSettings" Click="ShowSettingsWindow" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Left" >
                 <controls:SettingsButtonViewbox></controls:SettingsButtonViewbox>
             </Button>
         </StackPanel>
