@@ -73,7 +73,6 @@ namespace KitchenTimer.Windows
                     cmbAlarmSound.SelectedIndex = index;
                 }
             }
-
             InitializeSoundPlayer();
         }
 

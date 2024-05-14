@@ -9,6 +9,11 @@ namespace KitchenTimer.Utils
 {
     public class SoundUtils
     {
+        /// <summary>
+        /// Loads a wave file from the embedded resources and assigns it to the specified SoundPlayer.
+        /// </summary>
+        /// <param name="alarmName">The name of the wave file without the file extension.</param>
+        /// <param name="player">The SoundPlayer to assign the loaded wave file to.</param>
         public static void LoadWaveFile(string alarmName, SoundPlayer player)
         {
             //get the current assembly
