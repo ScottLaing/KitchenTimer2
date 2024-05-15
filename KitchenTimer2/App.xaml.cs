@@ -8,6 +8,9 @@ namespace KitchenTimer
     /// </summary>
     public partial class App : Application
     {
+        private const string UnexpectedExceptionMessage = "Unexpected exception occurred: {0}";
+        private const string ApplicationRestartMessage = "Application will attempt to continue, you may need to restart it in some cases if errors continue.";
+
         // backer variable for NewStopWatchWindowCounter
         internal int NewStopWatchWindowCounter = 0;
 
@@ -42,8 +45,8 @@ namespace KitchenTimer
         /// <param name="e">The event arguments.</param>
         void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            MessageBox.Show($"Unexpected exception occurred: {e?.Exception.Message}", Constants.AppTitle);
-            MessageBox.Show("Application will attempt to continue, you may need to restart it in some cases if errors continue.", Constants.AppTitle);
+            MessageBox.Show(string.Format(UnexpectedExceptionMessage, e?.Exception.Message), Constants.AppTitle);
+            MessageBox.Show(ApplicationRestartMessage, Constants.AppTitle);
             if (e != null)
             {
                 e.Handled = true;
