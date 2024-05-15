@@ -1,11 +1,7 @@
-﻿using KitchenTimer.Entities;
-using KitchenTimer2.Resx;
+﻿using KitchenTimer2.Resx;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Media;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace KitchenTimer.Windows
 {

@@ -1,5 +1,4 @@
 ﻿using KitchenTimer.Entities;
-using KitchenTimer2.Resx;
 using KitchenTimer2.Windows;
 using System;
 using System.ComponentModel;
@@ -8,7 +7,6 @@ using System.Media;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using static KitchenTimer.Constants.FontSizing;
 
 namespace KitchenTimer.Windows
