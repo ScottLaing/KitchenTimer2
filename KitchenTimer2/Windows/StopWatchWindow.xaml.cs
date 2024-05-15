@@ -14,10 +14,11 @@ using static KitchenTimer.Constants.FontSizing;
 namespace KitchenTimer.Windows
 {
     /// <summary>
-    /// Code behind class for MainWindow.xaml window
+    /// Code behind class for StopWatchWindow.xaml window
     /// </summary>
     public partial class StopWatchWindow : Window, INotifyPropertyChanged, IParentWindow
     {
+
         public TextBlock TimeTextBlock
         {
             get

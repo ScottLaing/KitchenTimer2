@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Threading;
 
 namespace KitchenTimer
@@ -14,10 +8,17 @@ namespace KitchenTimer
     /// </summary>
     public partial class App : Application
     {
+        // backer variable for NewStopWatchWindowCounter
         internal int NewStopWatchWindowCounter = 0;
 
+        /// <summary>
+        /// Keep track of latest new window counter.
+        /// </summary>
         public int NewWindowCounter { get; set; } = 1;
 
+        /// <summary>
+        /// Sets up exception handling for the application.
+        /// </summary>
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -25,20 +26,20 @@ namespace KitchenTimer
             SetupExceptionHandling();
         }
 
+        /// <summary>
+        /// Sets up exception handling for the application.
+        /// </summary>
         private void SetupExceptionHandling()
         {
-            //AppDomain.CurrentDomain.UnhandledException += (s, e) =>
-            //    LogUnhandledException((Exception)e.ExceptionObject, "AppDomain.CurrentDomain.UnhandledException");
-
             DispatcherUnhandledException += App_DispatcherUnhandledException;
-
-            //TaskScheduler.UnobservedTaskException += (s, e) =>
-            //{
-            //    LogUnhandledException(e.Exception, "TaskScheduler.UnobservedTaskException");
-            //    e.SetObserved();
-            //};
         }
 
+        /// <summary>
+        /// Handles the DispatcherUnhandledException event.
+        /// Displays a message box with the exception details and attempts to continue the application.
+        /// </summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event arguments.</param>
         void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             MessageBox.Show($"Unexpected exception occurred: {e?.Exception.Message}", Constants.AppTitle);
