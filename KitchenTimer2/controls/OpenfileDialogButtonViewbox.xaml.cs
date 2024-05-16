@@ -3,7 +3,7 @@
 namespace KitchenTimer.controls
 {
     /// <summary>
-    /// Interaction logic for SettingsButtonViewbox.xaml
+    /// Interaction logic for OpenfileDialogButtonViewbox.xaml
     /// </summary>
     public partial class OpenfileDialogButtonViewbox : UserControl
     {

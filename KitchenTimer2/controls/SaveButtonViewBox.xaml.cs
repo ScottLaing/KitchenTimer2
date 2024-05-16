@@ -3,7 +3,7 @@
 namespace KitchenTimer.controls
 {
     /// <summary>
-    /// Interaction logic for StartButtonViewbox.xaml
+    /// Interaction logic for SaveButtonViewbox.xaml
     /// </summary>
     public partial class SaveButtonViewbox : UserControl
     {
