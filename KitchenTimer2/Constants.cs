@@ -6,6 +6,8 @@ namespace KitchenTimer
     {
         public const string AppTitle = "Kitchen Timer";
         public const string WavExtension = ".wav";
+        public const string UnexpectedExceptionMessage = "Unexpected exception occurred: {0}";
+        public const string ApplicationRestartMessage = "Application will attempt to continue, you may need to restart it in some cases if errors continue.";
 
         public static class FontSizing
         {
