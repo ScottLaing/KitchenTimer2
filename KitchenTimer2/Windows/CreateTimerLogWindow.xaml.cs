@@ -38,7 +38,7 @@ namespace KitchenTimer.Windows
         /// <param name="countDown"></param>
         public CreateTimerLogWindow(string timerName) : this()
         {
-            this.txtLogName.Text = "New Timer Log";
+            this.txtLogName.Text = Constants.NewTimerLog;
         }
 
         #endregion

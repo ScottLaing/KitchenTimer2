@@ -9,6 +9,10 @@ namespace KitchenTimer
         public const string UnexpectedExceptionMessage = "Unexpected exception occurred: {0}";
         public const string ApplicationRestartMessage = "Application will attempt to continue, you may need to restart it in some cases if errors continue.";
 
+        public const string NewTimerLog = "New Timer Log"; // default timer log name
+
+
+
         public static class FontSizing
         {
             public const double FontSizeHeightFactor = 3.2;
