@@ -10,7 +10,7 @@ namespace KitchenTimer
         public const string ApplicationRestartMessage = "Application will attempt to continue, you may need to restart it in some cases if errors continue.";
 
         public const string NewTimerLog = "New Timer Log"; // default timer log name
-
+        public const string TimerFormat = "{0:F2}";
 
 
         public static class FontSizing

@@ -10,7 +10,7 @@ using System.Windows.Controls;
 namespace KitchenTimer.Windows
 {
     /// <summary>
-    /// Interaction logic for SetTime.xaml
+    /// Interaction logic for SettingsWindow.xaml
     /// </summary>
     public partial class SettingsWindow : Window
     {
@@ -65,7 +65,7 @@ namespace KitchenTimer.Windows
             {
                 this.currentAlarm = currentAlarm;
                 cmbAlarmSound.ItemsSource = Constants.AlarmList;
-                txtSetTime2.Text = string.Format("{0:F2}", countDown);
+                txtSetTime2.Text = string.Format(Constants.TimerFormat, countDown);
                 if (currentAlarm != null)
                 {
                     // find the index of the current alarm in the list (if it exists)

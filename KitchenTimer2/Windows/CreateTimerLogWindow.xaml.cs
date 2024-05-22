@@ -6,7 +6,7 @@ using System.Windows;
 namespace KitchenTimer.Windows
 {
     /// <summary>
-    /// Interaction logic for SetTime.xaml
+    /// Interaction logic for CreateTimerLogWindow.xaml
     /// </summary>
     public partial class CreateTimerLogWindow : Window
     {

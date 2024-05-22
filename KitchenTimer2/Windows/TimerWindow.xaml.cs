@@ -12,7 +12,7 @@ using static KitchenTimer.Constants.FontSizing;
 namespace KitchenTimer.Windows
 {
     /// <summary>
-    /// Code behind class for MainWindow.xaml window
+    /// Code behind class for TimerWindow.xaml window
     /// </summary>
     public partial class TimerWindow : Window, INotifyPropertyChanged, IParentWindow
     {

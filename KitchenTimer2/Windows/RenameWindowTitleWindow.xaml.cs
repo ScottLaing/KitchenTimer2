@@ -6,7 +6,7 @@ using System.Windows;
 namespace KitchenTimer.Windows
 {
     /// <summary>
-    /// Interaction logic for SetTime.xaml
+    /// Interaction logic for RenameWindowTitleWindow.xaml
     /// </summary>
     public partial class RenameWindowTitleWindow : Window
     {
