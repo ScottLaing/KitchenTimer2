@@ -22,7 +22,7 @@ namespace KitchenTimer.controls
         private bool _showSettingsMenuItem = true;
         public bool ShowSettingsMenuItem
         {
-            get 
+            get
             {
                 return _showSettingsMenuItem;
             }
@@ -38,24 +38,25 @@ namespace KitchenTimer.controls
                 }
             }
         }
+
         /// <summary>
-        /// Show the settings window, change settings.
+        /// Show the settings window and change settings.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void ShowSettingsWindow(object sender, RoutedEventArgs e)
         {
             if (ParentWindow != null)
             {
                 ParentWindow.ShowSettingsWindow(sender, e);
-            }   
+            }
         }
 
         /// <summary>
-        /// Handle show about window menu call.
+        /// Handle the show about window menu call.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         public void ShowAboutWindow(object sender, RoutedEventArgs e)
         {
             var aboutWindow = new AboutWindow();
@@ -63,15 +64,20 @@ namespace KitchenTimer.controls
         }
 
         /// <summary>
-        /// Handle exit menu call.
+        /// Handle the exit menu call.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void ShutdownApp(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Handle the stop watch window menu click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void MenuItem_StopWatchWindow_Click(object sender, RoutedEventArgs e)
         {
             var app = Application.Current as App;
@@ -84,6 +90,11 @@ namespace KitchenTimer.controls
             mainWin.Show();
         }
 
+        /// <summary>
+        /// Handle the rename timer menu click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void MenuItem_RenameTimer_Click(object sender, RoutedEventArgs e)
         {
             var renameWindow = new RenameWindowTitleWindow(ParentWindow?.TitleString ?? "");
@@ -101,7 +112,11 @@ namespace KitchenTimer.controls
             }
         }
 
-
+        /// <summary>
+        /// Handle the red color option click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void RedColorOption_Click(object sender, RoutedEventArgs e)
         {
             if (ParentWindow != null)
@@ -111,6 +126,11 @@ namespace KitchenTimer.controls
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Handle the green color option click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void GreenColorOption_Click1(object sender, RoutedEventArgs e)
         {
             if (ParentWindow != null)
@@ -120,6 +140,11 @@ namespace KitchenTimer.controls
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Handle the blue color option click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void BlueColorOption_Click(object sender, RoutedEventArgs e)
         {
             if (ParentWindow != null)
@@ -129,15 +154,25 @@ namespace KitchenTimer.controls
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Handle the purple color option click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void PurpleColorOption_Click(object sender, RoutedEventArgs e)
         {
             if (ParentWindow != null)
             {
                 ParentWindow.TimeTextBlock.Foreground = Brushes.Purple;
-            }  
+            }
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Handle the white color option click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void WhiteColorOption_Click(object sender, RoutedEventArgs e)
         {
             if (ParentWindow != null)
@@ -148,10 +183,10 @@ namespace KitchenTimer.controls
         }
 
         /// <summary>
-        /// handle the new window menu option
+        /// Handle the new timer window menu click.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void NewTimerWindow_Click(object sender, RoutedEventArgs e)
         {
             var app = Application.Current as App;
@@ -164,13 +199,18 @@ namespace KitchenTimer.controls
             mainWin.Show();
         }
 
+        /// <summary>
+        /// Handle the create new log menu click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void MenuItem_CreateNewLog(object sender, RoutedEventArgs e)
         {
             var createTimerLogWindow = new CreateTimerLogWindow(ParentWindow?.TitleString ?? "");
             bool? result = createTimerLogWindow.ShowDialog();
             if (result ?? false)
             {
-              // todo create new log file and turn on
+                // todo create new log file and turn on
             }
         }
     }
