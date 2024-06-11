@@ -7,6 +7,9 @@ namespace KitchenTimer.controls
     /// </summary>
     public partial class OpenfileDialogButtonViewbox : UserControl
     {
+        /// <summary>
+        /// OpenfileDialogButtonViewbox constructor
+        /// </summary>
         public OpenfileDialogButtonViewbox()
         {
             InitializeComponent();

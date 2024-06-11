@@ -7,6 +7,9 @@ namespace KitchenTimer.controls
     /// </summary>
     public partial class StopButtonViewbox : UserControl
     {
+        /// <summary>
+        /// StopButtonViewbox constructor
+        /// </summary>  
         public StopButtonViewbox()
         {
             InitializeComponent();

@@ -7,6 +7,9 @@ namespace KitchenTimer.controls
     /// </summary>
     public partial class RefreshButtonViewbox : UserControl
     {
+        /// <summary>
+        /// RefreshButtonViewbox constructor
+        /// </summary>
         public RefreshButtonViewbox()
         {
             InitializeComponent();
