@@ -12,14 +12,25 @@ namespace KitchenTimer.controls
     /// </summary>
     public partial class MenuDockPanel : UserControl
     {
+        // MenuDockPanel constructor
         public MenuDockPanel()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        // The parent window that this menu is associated with.
+        /// </summary>
         public IParentWindow? ParentWindow { get; set; }
 
+        /// <summary>
+        // Show the settings window and change settings.
+        /// </summary>
         private bool _showSettingsMenuItem = true;
+
+        /// <summary>
+        // Show the settings window and change settings.
+        /// </summary>
         public bool ShowSettingsMenuItem
         {
             get
