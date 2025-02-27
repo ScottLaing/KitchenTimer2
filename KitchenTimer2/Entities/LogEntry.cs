@@ -2,6 +2,9 @@
 
 namespace KitchenTimer.Entities
 {
+    /// <summary>
+    /// LogEntry class to track entries.
+    /// </summary>
     public class LogEntry
     {
         /// <summary>
