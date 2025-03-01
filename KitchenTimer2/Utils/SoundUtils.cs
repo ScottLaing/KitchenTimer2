@@ -2,6 +2,9 @@
 
 namespace KitchenTimer.Utils
 {
+    /// <summary>
+    /// Helper class for sound and wav file related actions.
+    /// </summary>
     public class SoundUtils
     {
         /// <summary>
