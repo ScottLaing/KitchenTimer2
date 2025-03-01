@@ -2,6 +2,9 @@
 
 namespace KitchenTimer
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Constants"/> class.
+    /// </summary>
     public class Constants
     {
         public const string AppTitle = "Kitchen Timer";
