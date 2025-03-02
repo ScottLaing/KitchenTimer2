@@ -7,6 +7,7 @@ namespace KitchenTimer.Windows
     /// </summary>
     public partial class AboutWindow : Window
     {
+        /// Initializes a new instance of the <see cref="AboutWindow"/> class.
         public AboutWindow()
         {
             InitializeComponent();

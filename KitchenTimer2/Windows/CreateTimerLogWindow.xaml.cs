@@ -24,7 +24,7 @@ namespace KitchenTimer.Windows
         #region Constructors
 
         /// <summary>
-        /// main constructor
+        /// Initializes a new instance of the <see cref="CreateTimerLogWindow"/> class.
         /// </summary>
         public CreateTimerLogWindow()
         {
